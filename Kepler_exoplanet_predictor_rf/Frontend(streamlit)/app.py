@@ -56,7 +56,7 @@ with st.expander('Advance Transit & Stellar Properties (Click to expand): '):
         tce_plntn = st.number_input('Threshold crossing event planet number/koi_tce_plnt_num: ', value=1)
         transit_snr = st.number_input('Transit model signal-to-noise ratio/koi_model_snr: ', value=32.1)
 
-threshold = st.slider('Detection Strictness (Lower % catches more planets, but increases False Positives): ', min_value=0, max_value=100, value=35) / 100
+threshold = st.slider('Detection Strictness (Lower % catches more planets, but increases False Positives): ', min_value=0, max_value=100, value=18) / 100
 
 if st.button('Predict Disposition'):
     input_data = pd.DataFrame([{
@@ -82,4 +82,4 @@ if st.button('Predict Disposition'):
     if (prediction[0, 1] >= threshold):
         st.success(f'CONFIRMED EXOPLANET! 🪐 \n Model Confidence: {prediction[0, 1] * 100: .2f}%')
     else:
-        st.error(f'FALSE POSITIVE. ❌ \n Model Confidence: {prediction[0, 0] * 100: .2f}')
+        st.error(f'FALSE POSITIVE. ❌ \n Model Confidence: {prediction[0, 0] * 100: .2f}%')
